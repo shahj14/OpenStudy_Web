@@ -9,19 +9,9 @@ class Login extends Component{
                 <div className="box-border">
                     <h1 className="title">Login</h1>
                     <form className="sign-log">
-                        <div className="hold-group">
-                            <div className="entry-group">
-                                <input type="text" name="first" placeholder="First" className="entry"/>
-                                <input type="email" name="email" placeholder="Email" className="entry"/>
-                                <input type="text" name="password" placeholder="Password" className="entry"/>
-                            </div>
-                            <div className="entry-group">
-                                <input type="text" name="last" placeholder="Last" className="entry"/>
-                                <input type="password" name="phone" placeholder="(XXX)-XXX-XXXX" className="entry"/>
-                                <input type="password" name="confirmPassword" placeholder="Confirm Password" className="entry"/>
-                            </div>
-                        </div>
-                        <input type="submit" name="submit" value="Sign Up" className="submit"/>
+                        <input type="email" name="email" placeholder="Email" className="entry"/>
+                        <input type="text" name="password" placeholder="Password" className="entry"/>
+                        <input type="submit" name="submit" value="Login" className="submit"/>
                     </form>
                     <p>Don't have an account? <a><Link to="/signup">Signup!</Link></a></p>
                 </div>
