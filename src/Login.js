@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './Signup.css';
+import './Login.css';
 
-class Signup extends Component{
+class Login extends Component{
     render(){
         return(
             <div className="container">
                 <div className="box-border">
-                    <h1 className="title">Sign Up</h1>
+                    <h1 className="title">Login</h1>
                     <form className="sign-log">
                         <div className="hold-group">
                             <div className="entry-group">
@@ -23,11 +23,11 @@ class Signup extends Component{
                         </div>
                         <input type="submit" name="submit" value="Sign Up" className="submit"/>
                     </form>
-                    <p>Already have an account? <a><Link to="/login">Login!</Link></a></p>
+                    <p>Don't have an account? <a><Link to="/signup">Signup!</Link></a></p>
                 </div>
             </div>
         )
     }
 }
 
-export default Signup;
+export default Login;

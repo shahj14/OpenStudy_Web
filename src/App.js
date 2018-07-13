@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './Navbar';
-import Signup from './Signup';
+import Main from './Main';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Navbar />
-        <Signup />
+        <Main />
       </div>
     );
   }
