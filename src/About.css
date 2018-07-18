@@ -1,0 +1,13 @@
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    max-width: 500px;
+}
