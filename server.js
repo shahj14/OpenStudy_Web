@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 5000
 const { Pool } = require('pg')
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  // ssl: true
+  ssl: true
 })
 
 express()
@@ -25,7 +25,7 @@ express()
   .get('/db', async (req, res) => {
       try {
         const client = await pool.connect()
-        const result = await client.query('SELECT * FROM student');
+        const result = await client.query('SELECT * FROM room');
         res.send(result);
         client.release();
       } catch (err) {
