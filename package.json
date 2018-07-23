@@ -1,11 +1,11 @@
 {
   "name": "openstudy_web",
   "version": "1.0.0",
-  "description": "",
+  "description": "application which tracks open study rooms in Langsam Library",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "concurrently \"node server.js\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
     "cool-ascii-faces": "^1.3.4",
     "express": "^4.16.3",
     "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0"
   }
 }
