@@ -6,7 +6,7 @@
     "build": "concurrently \"cd server && npm build\" \"cd client && npm build\"",
     "install": "(cd client && npm install) && (cd server && npm install)",
     "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
-    "start:prod": "cd server && npm start:prod"
+    "start:prod": "cd server && npm start"
   },
   "repository": {
     "type": "git",

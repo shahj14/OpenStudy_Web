@@ -12,8 +12,6 @@
     "concurrently": "^3.6.0"
   },
   "scripts": {
-    "build": "babel . --ignore node_modules,build --out-dir build",
     "start": "node server.js",
-    "start:prod": "node build/server.js"
   }
 }
