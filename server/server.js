@@ -1,6 +1,5 @@
 const express = require('express')
 const cool = require('cool-ascii-faces')
-const path = require('path')
 const PORT = process.env.PORT || 5100
 const { Pool } = require('pg')
 const pool = new Pool({
@@ -10,7 +9,7 @@ const pool = new Pool({
 const app = express();
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+  app.use(express.static('../client/build'));
 }
 
 app.get('/cool', (req, res) => res.send(cool()))
