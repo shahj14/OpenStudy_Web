@@ -7,12 +7,15 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 })
+const app = express();
 
-express()
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
 
-  .get('/cool', (req, res) => res.send(cool()))
+app.get('/cool', (req, res) => res.send(cool()))
 
-  .get('/db', async (req, res) => {
+app.get('/db', async (req, res) => {
       try {
         const client = await pool.connect()
         const result = await client.query('SELECT * FROM room');
@@ -23,4 +26,5 @@ express()
         res.send('=> ' + err);
       }
   })
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
