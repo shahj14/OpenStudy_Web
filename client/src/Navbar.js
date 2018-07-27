@@ -16,6 +16,7 @@ class Navbar extends Component{
                         <a><Link to="/about">About</Link></a>
                         <a><Link to="/faq">FAQ</Link></a>
                         <a><Link to="/settings">Settings</Link></a>
+                        <a><Link to="/library">Library</Link></a>
                     </div>
 
                 </div>
