@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "build": "concurrently \"cd server && npm build\" \"cd client && npm build\"",
     "install": "(cd client && npm install) && (cd server && npm install)",
-    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\""
+    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
+    "start:prod": "cd server && npm start:prod"
   },
   "repository": {
     "type": "git",
