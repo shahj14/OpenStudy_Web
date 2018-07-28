@@ -15,15 +15,15 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/cool', (req, res) => res.send(cool()))
 
 app.get('/db', async (req, res) => {
-      try {
-        const client = await pool.connect()
-        const result = await client.query('SELECT * FROM room');
-        res.send(result.rows);
-        client.release();
-      } catch (err) {
-        console.error(err);
-        res.send('=> ' + err);
-      }
-  })
+    try {
+      const client = await pool.connect()
+      const result = await client.query('SELECT * FROM room');
+      res.send(result.rows);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send('=> ' + err);
+    }
+})
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
