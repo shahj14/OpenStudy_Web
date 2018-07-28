@@ -1,17 +1,22 @@
 {
-  "name": "open-study-web",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
-  },
+  "name": "openstudy",
+  "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "install": "(cd client && npm install) && (cd server && npm install)",
+    "build": "cd client && npm run build",
+    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
+    "start:prod": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahj14/OpenStudy_Web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shahj14/OpenStudy_Web/issues"
+  },
+  "homepage": "https://github.com/shahj14/OpenStudy_Web#readme",
+  "dependencies": {
+    "concurrently": "^3.6.0"
   }
 }
