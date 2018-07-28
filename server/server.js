@@ -45,7 +45,7 @@ app.get('/api/floor/:num', async (req, res) => {
      }
  })
 
-// flip the occupied value of a room
+// flip occupied to true
 app.get('/api/room/:num/true', async (req, res) => {
      try {
        const num = req.params.num;
@@ -59,6 +59,7 @@ app.get('/api/room/:num/true', async (req, res) => {
      }
  })
 
+// flip occupied to false
  app.get('/api/room/:num/false', async (req, res) => {
       try {
         const num = req.params.num;
@@ -72,6 +73,7 @@ app.get('/api/room/:num/true', async (req, res) => {
       }
   })
 
+// get all users -- not for production
  app.get('/api/user', async (req, res) => {
      try {
        const num = req.params.num;
@@ -85,12 +87,42 @@ app.get('/api/room/:num/true', async (req, res) => {
      }
  })
 
+// add new user (details in request body)
  app.post('/api/user', async (req, res) => {
      try {
        var b = req.body;
        const client = await pool.connect();
-       const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, b.email]);
+       const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, b.password]);
        res.send(result.rows[0]);
+       client.release();
+     } catch (err) {
+       console.error(err);
+       res.send('=> ' + err);
+     }
+ })
+
+
+ app.put('/api/user/:email', async (req, res) => {
+     try {
+       var b = req.body;
+       const email = req.params.email;
+       const client = await pool.connect();
+       const result = await client.query('UPDATE student SET email=$1, fname=$2, lname=$3, password=$4 WHERE email=$5 RETURNING *', [b.email, b.fname, b.lname, b.password, email]);
+       res.send(result.rows[0]);
+       client.release();
+     } catch (err) {
+       console.error(err);
+       res.send('=> ' + err);
+     }
+ })
+
+// delete user by email
+ app.delete('/api/user/:email', async (req, res) => {
+     try {
+       const email = req.params.email;
+       const client = await pool.connect();
+       const result = await client.query('DELETE FROM student WHERE email=$1', [email]);
+       res.status(200).send();
        client.release();
      } catch (err) {
        console.error(err);
