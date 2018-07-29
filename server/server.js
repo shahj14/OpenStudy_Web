@@ -1,5 +1,6 @@
 const express = require('express')
-var bodyParser = require("body-parser")
+var bodyParser = require('body-parser')
+const bcrypt = require('bcrypt');
 const PORT = process.env.PORT || 5100
 const { Pool } = require('pg')
 const pool = new Pool({
@@ -87,11 +88,14 @@ app.get('/api/room/:num/true', async (req, res) => {
 // add new user (details in request body)
  app.post('/api/user', async (req, res) => {
      try {
-       var b = req.body;
-       const client = await pool.connect();
-       const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, b.password]);
-       res.send(result.rows[0]);
-       client.release();
+       const b = req.body;
+       const password = b.password;
+       bcrypt.hash(password, 10, async (err, hash) => {
+         const client = await pool.connect();
+         const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, hash]);
+         res.send(result.rows[0]);
+         client.release();
+       });
      } catch (err) {
        console.error(err);
        res.send('=> ' + err);
