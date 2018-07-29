@@ -1,0 +1,12 @@
+.room{
+    padding: 10px;
+    margin: 1px;
+    width: 12%;
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    font-size: 1.2em;
+    font-weight: 600;
+}

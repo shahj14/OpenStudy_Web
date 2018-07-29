@@ -1,0 +1,20 @@
+.floor-select{
+    padding: 20px;
+    display: flex;
+}
+
+.floor{
+    color: white;
+    background: black;
+    border: grey 2px solid;
+    padding: 20px;
+    font-size: 1.4em;
+}
+
+.left{
+    border-radius: 8px 0 0 8px;
+}
+
+.right{
+    border-radius: 0 8px 8px 0;
+}

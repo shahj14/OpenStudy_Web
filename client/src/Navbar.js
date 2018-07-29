@@ -9,14 +9,14 @@ class Navbar extends Component{
                 <div className="nav-bar">
 
                     <div className="logo">
-                        <a><Link to="/">OpenStudy™</Link></a>
+                        <Link to="/">OpenStudy™</Link>
                     </div>
 
                     <div className="nav-links">
-                        <a><Link to="/about">About</Link></a>
-                        <a><Link to="/faq">FAQ</Link></a>
-                        <a><Link to="/settings">Settings</Link></a>
-                        <a><Link to="/library">Library</Link></a>
+                        <Link to="/about">About</Link>
+                        <Link to="/faq">FAQ</Link>
+                        <Link to="/settings">Settings</Link>
+                        <Link to="/library">Library</Link>
                     </div>
 
                 </div>
