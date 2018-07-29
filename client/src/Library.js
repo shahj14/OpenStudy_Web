@@ -13,7 +13,7 @@ class Library extends Component{
   }
 
   componentDidMount() {
-    fetch("db")
+    fetch("api/floor/5")
       .then(res => res.json())
       .then(
         (result) => {

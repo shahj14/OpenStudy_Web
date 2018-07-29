@@ -1,6 +1,5 @@
 const express = require('express')
 var bodyParser = require("body-parser")
-const cool = require('cool-ascii-faces')
 const PORT = process.env.PORT || 5100
 const { Pool } = require('pg')
 const pool = new Pool({
@@ -14,8 +13,6 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('../client/build'));
 }
-
-app.get('/cool', (req, res) => res.send(cool()))
 
 // get all rooms on a floor
 app.get('/api/floor/:num', async (req, res) => {
@@ -101,7 +98,7 @@ app.get('/api/room/:num/true', async (req, res) => {
      }
  })
 
-
+// edit user by email
  app.put('/api/user/:email', async (req, res) => {
      try {
        var b = req.body;
