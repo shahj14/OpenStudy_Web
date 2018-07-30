@@ -6,12 +6,14 @@ import Library from './Library';
 import About from './About';
 import FAQ from './FAQ';
 import Settings from './Settings';
+import RoomPage from './RoomPage';
 
 
 const Main = () => (
     <main>
         <Switch>
             <Route exact path="/" component={Signup}/>
+            <Route exact path="/main" component={RoomPage}/>
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/library" component={Library}/>
