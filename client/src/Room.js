@@ -8,14 +8,20 @@ class Room extends Component{
         this.props.Change(num,status)
     }
 
-    render(){
+    render() {
 
         let styles = {};
 
-        if(this.props.room.occupied){
+        if (this.props.room.occupied) {
             styles = {background: 'rgb(220,0,0)'}
-        }else{
+        } else {
             styles = {background: 'rgb(0,200,0)'}
+        }
+
+        if (this.props.discolor && this.props.room.occupied) {
+            styles = {background: '#6d6f72'}
+        } else if(this.props.discolor && !this.props.room.occupied) {
+            styles = {background: '#a3a8af'}
         }
 
         return(

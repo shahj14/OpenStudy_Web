@@ -14,7 +14,7 @@ class RoomList extends Component{
 
         Rooms = this.props.rooms.map((room) => {
             return(
-                <Room room={room} key={room.number} Change={this.changeRoom.bind(this)}/>
+                <Room room={room} key={room.number} Change={this.changeRoom.bind(this)} discolor={this.props.color}/>
             )
         })
         return(

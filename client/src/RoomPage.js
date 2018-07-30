@@ -15,16 +15,19 @@ class RoomPage extends Component{
             showForm: false,
             roomNum: null,
             roomStatus: null,
-            allowRoom: false
+            allowRoom: false,
+            discolor: false
         }
     }
 
     handleFloorChange(floorNum){
+
         fetch("/api/floor/" + floorNum)
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
+                        showForm: false,
                         floor: floorNum,
                         rooms: result.sort((a, b) => {
                             return a.number - b.number;
@@ -35,7 +38,7 @@ class RoomPage extends Component{
     }
 
     changeRoom(num,status){
-        this.setState({showForm: true, roomNum: num, roomStatus: status})
+        this.setState({showForm: true,discolor: true, roomNum: num, roomStatus: status})
     }
 
     handleFormConfirm(){
@@ -55,11 +58,11 @@ class RoomPage extends Component{
                 break;
             }
         }
-        this.setState({rooms: roomList, showForm: false})
+        this.setState({rooms: roomList, showForm: false, discolor: false})
     }
 
     handleFormClose(){
-        this.setState({showForm: false})
+        this.setState({showForm: false, discolor: false})
     }
 
     componentDidMount(){
@@ -82,12 +85,12 @@ class RoomPage extends Component{
         const {showForm} = this.state
         return(
             <div className="room-page">
-                <FloorSelect handleFloor = {this.handleFloorChange.bind(this)}/>
-                { showForm ?
-                    <RoomPopup roomNum={this.state.roomNum} status={this.state.roomStatus} onConfirm={this.handleFormConfirm.bind(this)} onClose={this.handleFormClose.bind(this)}/>:
-                    null
-                }
-                <RoomList rooms = {this.state.rooms} Change={this.changeRoom.bind(this)}/>
+                    <FloorSelect handleFloor = {this.handleFloorChange.bind(this)}/>
+                    { showForm ?
+                        <RoomPopup roomNum={this.state.roomNum} status={this.state.roomStatus} onConfirm={this.handleFormConfirm.bind(this)} onClose={this.handleFormClose.bind(this)}/>:
+                        null
+                    }
+                    <RoomList rooms = {this.state.rooms} Change={this.changeRoom.bind(this)} color={this.state.discolor}/>
             </div>
         )
     }
