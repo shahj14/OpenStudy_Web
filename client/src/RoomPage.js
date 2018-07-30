@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import FloorSelect from './FloorSelect';
 import RoomList from './RoomList'
+import RoomPopup from './RoomPopup'
 import './RoomPage.css';
 
 
@@ -10,7 +11,11 @@ class RoomPage extends Component{
         super();
         this.state = {
             rooms: [],
-            floor: 4
+            floor: 4,
+            showForm: false,
+            roomNum: null,
+            roomStatus: null,
+            allowRoom: false
         }
     }
 
@@ -30,15 +35,31 @@ class RoomPage extends Component{
     }
 
     changeRoom(num,status){
-        let roomList = this.state.rooms;
-        for (var i=0; i<roomList.length; i++){
-            if(roomList[i]['number'] === num){
-                roomList[i]['occupied'] = !status
+        this.setState({showForm: true, roomNum: num, roomStatus: status})
+    }
+
+    handleFormConfirm(){
+        let {roomStatus, roomNum, rooms} = this.state
+
+        let roomList = rooms;
+
+        if(this.statestatus){
+            fetch('/api/room/'+roomNum+'/false')
+        }else{
+            fetch('/api/room/'+roomNum+'/true')
+        }
+
+        for (let i=0; i<roomList.length; i++){
+            if(roomList[i]['number'] === roomNum){
+                roomList[i]['occupied'] = !roomStatus
                 break;
             }
         }
-        console.log(roomList)
-        this.setState({rooms: roomList})
+        this.setState({rooms: roomList, showForm: false})
+    }
+
+    handleFormClose(){
+        this.setState({showForm: false})
     }
 
     componentDidMount(){
@@ -58,9 +79,14 @@ class RoomPage extends Component{
 
 
     render(){
+        const {showForm} = this.state
         return(
             <div className="room-page">
                 <FloorSelect handleFloor = {this.handleFloorChange.bind(this)}/>
+                { showForm ?
+                    <RoomPopup roomNum={this.state.roomNum} status={this.state.roomStatus} onConfirm={this.handleFormConfirm.bind(this)} onClose={this.handleFormClose.bind(this)}/>:
+                    null
+                }
                 <RoomList rooms = {this.state.rooms} Change={this.changeRoom.bind(this)}/>
             </div>
         )

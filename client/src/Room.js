@@ -5,11 +5,6 @@ import './Room.css';
 class Room extends Component{
 
     changeRoom(num,status){
-        if(status){
-            fetch('/api/room/'+num+'/false')
-        }else{
-            fetch('/api/room/'+num+'/true')
-        }
         this.props.Change(num,status)
     }
 
@@ -24,8 +19,8 @@ class Room extends Component{
         }
 
         return(
-            <div className="room" style={styles}>
-                <p onClick={this.changeRoom.bind(this,this.props.room.number,this.props.room.occupied)}>{this.props.room.number}</p>
+            <div className="room" style={styles} onClick={this.changeRoom.bind(this,this.props.room.number,this.props.room.occupied)}>
+                <p>{this.props.room.number}</p>
             </div>
         )
     }
