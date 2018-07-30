@@ -15,7 +15,7 @@ class RoomPopup extends Component{
     render(){
 
         return(
-            <div className="box-border">
+            <div className="box">
                 {this.props.status ?
                     <h3>Check out of Room #{this.props.roomNum}</h3>:
                     <h3>Check in to Room #{this.props.roomNum}</h3>
