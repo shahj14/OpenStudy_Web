@@ -34,7 +34,8 @@ class Signup extends Component{
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
             }
-        }).then(res => res.json)
+        }).then(res => res.json).
+            then(this.props.history.push('/login'))
     }
 
     render(){

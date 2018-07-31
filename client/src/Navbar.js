@@ -3,6 +3,7 @@ import './Navbar.css';
 import {Link} from 'react-router-dom';
 
 class Navbar extends Component{
+
     render(){
         return(
             <div>
@@ -15,8 +16,9 @@ class Navbar extends Component{
                     <div className="nav-links">
                         <Link to="/about">About</Link>
                         <Link to="/faq">FAQ</Link>
-                        <Link to="/settings">Settings</Link>
-                        <Link to="/library">Library</Link>
+                        {this.props.user ?
+                            <Link to="/settings">Settings</Link> : null
+                        }
                     </div>
 
                 </div>

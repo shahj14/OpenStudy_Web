@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './Login.css';
 
 class Login extends Component{
@@ -8,12 +8,13 @@ class Login extends Component{
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            switch: false
         }
     }
 
-    handleSubmit(e){
-        e.preventDefault()
+    handleSubmit(event){
+        event.preventDefault()
         fetch("/api/user")
             .then(res => res.json())
             .then(
@@ -21,6 +22,8 @@ class Login extends Component{
                     for(let i = 0; i < result.length; i++){
                         if (this.state.email === result[i].email && this.state.password === result[i].password){
                             this.props.user(result[i])
+                            this.setState({switch: true})
+                            break;
                         }
                     }
                 }
@@ -32,13 +35,18 @@ class Login extends Component{
     }
 
     render(){
+
+        if (this.state.switch){
+            return <Redirect to="/rooms"/>
+        }
+
         return(
             <div className="container">
                 <div className="box-border">
                     <h1 className="title">Login</h1>
                     <form className="sign-log" onSubmit={this.handleSubmit.bind(this)}>
                         <input type="email" name="email" placeholder="Email" className="entry" onChange={this.handleChange.bind(this)}/>
-                        <input type="text" name="password" placeholder="Password" className="entry" onChange={this.handleChange.bind(this)}/>
+                        <input type="password" name="password" placeholder="Password" className="entry" onChange={this.handleChange.bind(this)}/>
                         <input type="submit" name="submit" value="Login" className="submit"/>
                     </form>
                     <p>Don't have an account? <Link to="/signup">Signup!</Link></p>
