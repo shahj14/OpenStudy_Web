@@ -48,25 +48,20 @@ passport.use(new LocalStrategy({
   },
   function(email, password, done) {
     findUser(email, function(err, user) {
-      if (err) {
-        // database connection failed
+      if (err) { // database connection failed
         return done(err);
       }
-      if (!user) {
-        // user does not exist
+      if (!user) { // user does not exist
         return done(null, false);
       }
       bcrypt.compare(password, user.password, (err, isValid) => {
-        if (err) {
-          // bcrypt malfunction
+        if (err) { // bcrypt malfunction
           return done(err);
         }
-        if (!isValid) {
-          // wrong password
+        if (!isValid) { // wrong password
           return done(null, false);
         }
-        // successful authentication
-        return done(null, user);
+        return done(null, user); // successful authentication
       })
     })
   }
@@ -92,14 +87,14 @@ app.get('/settings',
     res.send(req.user);
   });
 
-app.get('/login', function(req, res) {
-  res.send('you must log in');
-});
+// app.get('/login', function(req, res) {
+//   res.send('you must log in');
+// });
+//
+// app.post('/login', passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/login' }));
 
-app.post('/login', passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/login' }));
 
-
-
+app.post('/api/login', passport.authenticate('local'));
 
 
 
