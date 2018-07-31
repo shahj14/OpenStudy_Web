@@ -46,7 +46,7 @@ class RoomPage extends Component{
 
         let roomList = rooms;
 
-        if(this.statestatus){
+        if(roomStatus){
             fetch('/api/room/'+roomNum+'/false')
         }else{
             fetch('/api/room/'+roomNum+'/true')
