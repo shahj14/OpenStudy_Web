@@ -173,12 +173,16 @@ app.get('/api/room/:num/true', async (req, res) => {
      try {
        const b = req.body;
        const password = b.password;
-       bcrypt.hash(password, 12, async (err, hash) => {
+       // bcrypt.hash(password, 12, async (err, hash) => {
+       //   const client = await pool.connect();
+       //   const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, hash]);
+       //   res.send(result.rows[0]);
+       //   client.release();
+       // });
          const client = await pool.connect();
-         const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, hash]);
+         const result = await client.query('INSERT INTO student VALUES($1, $2, $3, $4) RETURNING *', [b.email, b.fname, b.lname, b.password]);
          res.send(result.rows[0]);
          client.release();
-       });
      } catch (err) {
        console.error(err);
        res.send('=> ' + err);
