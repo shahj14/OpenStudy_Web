@@ -1,0 +1,24 @@
+.light{
+
+}
+
+.faq-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.content{
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 6%;
+}
+
+.faq-container p{
+    margin: 2px;
+}
+
+.faq-container .ans{
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}

@@ -3,13 +3,19 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 60%;
+    background: #cbd0d8;
+    padding: 40px;
+    border-radius: 15px;
+    margin: 30px auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .floor-select{
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .room-list{
-    margin-top: 50px;
-    width: 60%;
+    margin-top: 0px;
+    width: 100%;
 }
