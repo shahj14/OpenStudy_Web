@@ -23,7 +23,16 @@ class Main extends Component{
         this.setState({user: u})
     }
 
+    handleLogout(){
+        this.setState({user: {fname: '', lname:'', email:'', password: ''}})
+        this.props.newUser(null)
+    }
+
     render(){
+        if(this.state.redir){
+            return
+        }
+
         return(
             <main>
                 <Switch>
@@ -38,7 +47,7 @@ class Main extends Component{
                     <Route exact path="/library" component={Library}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/faq" component={FAQ}/>
-                    <Route exact path="/settings" render={() => <Settings user={this.state.user} newUser={this.handleUser.bind(this)}/>} />
+                    <Route exact path="/settings" render={() => <Settings user={this.state.user} newUser={this.handleUser.bind(this)} logout={this.handleLogout.bind(this)} />}/>
                 </Switch>
             </main>
         )

@@ -46,19 +46,19 @@ class Signup extends Component{
                     <form className="sign-log" onSubmit={this.handleSubmit.bind(this)}>
                         <div className="hold-group">
                             <div className="entry-group">
-                                <input type="text" name="fname" placeholder="First" className="entry" value={this.state.fname} onChange={this.handleChange}/>
-                                <input type="email" name="email" placeholder="Email" className="entry" value={this.state.email} onChange={this.handleChange}/>
-                                <input type="password" name="password" placeholder="Password" className="entry" value={this.state.password} onChange={this.handleChange}/>
+                                <input type="text" name="fname" placeholder="First" className="entry" value={this.state.fname} onChange={this.handleChange} tabIndex='1'/>
+                                <input type="email" name="email" placeholder="Email" className="entry" value={this.state.email} onChange={this.handleChange} tabIndex='3'/>
+                                <input type="password" name="password" placeholder="Password" className="entry" value={this.state.password} onChange={this.handleChange} tabIndex='5'/>
                             </div>
                             <div className="entry-group">
-                                <input type="text" name="lname" placeholder="Last" className="entry" value={this.state.lname} onChange={this.handleChange}/>
-                                <input type="text" name="phone" placeholder="(XXX)-XXX-XXXX" className="entry"/>
-                                <input type="password" name="confirmPassword" placeholder="Confirm Password" className="entry"/>
+                                <input type="text" name="lname" placeholder="Last" className="entry" value={this.state.lname} onChange={this.handleChange} tabIndex='2'/>
+                                <input type="text" name="phone" placeholder="(XXX)-XXX-XXXX" className="entry" tabIndex='4'/>
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password" className="entry" tabIndex='6'/>
                             </div>
                         </div>
-                        <input type="submit" name="submit" value="Sign Up" className="submit"/>
+                        <input type="submit" name="submit" value="Sign Up" className="submit" tabIndex='7'/>
                     </form>
-                    <p>Already have an account? <Link to="/login">Login!</Link></p>
+                    <p>Already have an account? <Link to="/login" tabIndex="8">Login!</Link></p>
                 </div>
             </div>
         )
