@@ -34,7 +34,7 @@ class Settings extends Component{
         return(
             <div className="container">
                 <div className="settings-box">
-                    <h1 className="title">Settings Page</h1>
+                    <h1 className="title">Manage Settings</h1>
                     <form className="sign-log" onSubmit={this.handleSubmit.bind(this)}>
                         <div className="settings-hold">
                                 <input type="text" name="fname" placeholder="First" className="sel-entry" value={this.state.fname} onChange = {this.handleChange.bind(this)}/>

@@ -19,6 +19,7 @@ class Main extends Component{
     }
 
     handleUser(u){
+        this.props.newUser(u)
         this.setState({user: u})
     }
 
@@ -26,7 +27,11 @@ class Main extends Component{
         return(
             <main>
                 <Switch>
-                    <Route exact path="/" component={Signup}/>
+                    {
+                        this.state.user.fname === '' ?
+                        <Route exact path="/" component={Signup}/>:
+                        <Route exact path="/" component={RoomPage}/>
+                    }
                     <Route exact path="/rooms" component={RoomPage}/>
                     <Route exact path="/signup" component={Signup}/>
                     <Route exact path="/login" render={() => <Login user={this.handleUser.bind(this)}/>} />
