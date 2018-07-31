@@ -11,7 +11,7 @@ class RoomPage extends Component{
         super();
         this.state = {
             rooms: [],
-            floor: 4,
+            floor: 5,
             showForm: false,
             roomNum: null,
             roomStatus: null,
@@ -28,6 +28,7 @@ class RoomPage extends Component{
                 (result) => {
                     this.setState({
                         showForm: false,
+                        discolor: false,
                         floor: floorNum,
                         rooms: result.sort((a, b) => {
                             return a.number - b.number;
